@@ -1,0 +1,21 @@
+% TaskOfLab12, SP22-BSE-052
+
+parent(john, mary).
+parent(john, james).
+parent(susan, mary).
+parent(susan, james).
+parent(mary, alice).
+parent(mary, bob).
+
+male(john).
+male(james).
+male(bob).
+female(susan).
+female(mary).
+female(alice).
+
+grandparent(X, Y) :- parent(X, Z), parent(Z, Y).
+sibling(X, Y) :- parent(Z, X), parent(Z, Y), X \= Y.
+uncle(X, Y) :- male(X), sibling(X, Z), parent(Z, Y).
+
+% Query: ?- uncle(james, alice).
